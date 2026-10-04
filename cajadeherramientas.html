@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caja de Herramientas — Mejores IAs y sitios 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F1B2D;
+    --navy-2: #16263D;
+    --teal: #4ECDC4;
+    --amber: #F4A537;
+    --off-white: #EDF2F7;
+    --slate: #8A99AC;
+    --purple: #A78BFA;
+    --pink: #F472B6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--off-white);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.5;
+  }
+
+  h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+
+  .hero {
+    padding: 3.5rem 1.5rem 2rem;
+    text-align: center;
+  }
+
+  .eyebrow {
+    color: var(--teal);
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 6vw, 3.1rem);
+    font-weight: 700;
+    max-width: 700px;
+    margin: 0 auto 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .hero h1 span { color: var(--teal); }
+
+  .hero p {
+    color: var(--slate);
+    max-width: 520px;
+    margin: 0 auto;
+    font-size: 1.02rem;
+  }
+
+  .controls {
+    max-width: 900px;
+    margin: 2rem auto 0;
+    padding: 0 1.5rem;
+  }
+
+  #search {
+    width: 100%;
+    background: var(--navy-2);
+    border: 1px solid rgba(138, 153, 172, 0.25);
+    color: var(--off-white);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  #search:focus { outline: 2px solid var(--teal); outline-offset: 1px; }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .filter-btn {
+    background: var(--navy-2);
+    border: 1px solid rgba(138, 153, 172, 0.2);
+    color: var(--slate);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .filter-btn:hover { border-color: var(--teal); color: var(--off-white); }
+
+  .filter-btn.active {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--navy);
+  }
+
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 3rem;
+  }
+
+  .cat-block { margin-bottom: 2.6rem; }
+
+  .cat-header {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 1rem;
+  }
+
+  .cat-header .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+  }
+
+  .cat-header h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  .cat-header .cat-count {
+    color: var(--slate);
+    font-size: 0.8rem;
+    margin-left: auto;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 0.8rem;
+  }
+
+  .card {
+    background: var(--navy-2);
+    border: 1px solid rgba(138, 153, 172, 0.15);
+    border-radius: 12px;
+    padding: 1.1rem 1.2rem;
+    text-decoration: none;
+    color: var(--off-white);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .card:hover {
+    border-color: var(--card-accent, var(--teal));
+    transform: translateY(-2px);
+  }
+
+  .card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card h3 .arrow {
+    color: var(--card-accent, var(--teal));
+    font-size: 0.9rem;
+  }
+
+  .card p {
+    color: var(--slate);
+    font-size: 0.83rem;
+  }
+
+  .no-results {
+    text-align: center;
+    color: var(--slate);
+    padding: 2rem 0;
+    display: none;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--slate);
+    font-size: 0.8rem;
+    padding: 1rem 1.5rem 3rem;
+  }
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="eyebrow">Caja de herramientas</div>
+    <h1>Las mejores <span>IAs y sitios 3D</span>, todo en un lugar</h1>
+    <p>Organizado por categoría: programar, escribir, generar ideas, imágenes y modelado/impresión 3D.</p>
+  </div>
+
+  <div class="controls">
+    <input type="text" id="search" placeholder="Buscar (ej: código, imágenes, imprimir)...">
+    <div class="filters" id="filters">
+      <button class="filter-btn active" data-cat="all">Todo</button>
+      <button class="filter-btn" data-cat="codigo">Programar</button>
+      <button class="filter-btn" data-cat="texto">Texto</button>
+      <button class="filter-btn" data-cat="ideas">Ideas</button>
+      <button class="filter-btn" data-cat="imagenes">Imágenes</button>
+      <button class="filter-btn" data-cat="modelado">Modelado 3D</button>
+      <button class="filter-btn" data-cat="repositorios">Modelos 3D listos</button>
+    </div>
+  </div>
+
+  <main id="main"></main>
+
+  <div class="no-results" id="no-results">No se encontró nada con esa búsqueda.</div>
+
+  <footer>Directorio personal — actualizalo a medida que descubras nuevas herramientas.</footer>
+
+<script>
+  const data = [
+    {
+      cat: 'codigo', catLabel: 'IA para programar', accent: '#4ECDC4',
+      tools: [
+        { name: 'GitHub Copilot', desc: 'Autocompletado de código dentro del editor, integrado con VS Code.', url: 'https://github.com/features/copilot' },
+        { name: 'Claude', desc: 'Muy bueno para explicar, refactorizar y escribir proyectos completos.', url: 'https://claude.ai' },
+        { name: 'Cursor', desc: 'Editor de código pensado desde cero para trabajar con IA.', url: 'https://cursor.com' },
+        { name: 'ChatGPT', desc: 'Generalista, útil para debug rápido y dudas puntuales.', url: 'https://chatgpt.com' },
+        { name: 'Replit', desc: 'Programar y correr proyectos online con ayuda de IA, sin instalar nada.', url: 'https://replit.com' },
+      ]
+    },
+    {
+      cat: 'texto', catLabel: 'IA para texto y escritura', accent: '#F4A537',
+      tools: [
+        { name: 'Claude', desc: 'Textos largos, tono natural, bueno para redacción prolija.', url: 'https://claude.ai' },
+        { name: 'ChatGPT', desc: 'Rápido para borradores, resúmenes y reescritura.', url: 'https://chatgpt.com' },
+        { name: 'Gemini', desc: 'Integrado con Google Docs y Gmail para escribir directo ahí.', url: 'https://gemini.google.com' },
+        { name: 'Grammarly', desc: 'Corrector de gramática y estilo, sobre todo en inglés.', url: 'https://www.grammarly.com' },
+      ]
+    },
+    {
+      cat: 'ideas', catLabel: 'IA para ideas y brainstorming', accent: '#A78BFA',
+      tools: [
+        { name: 'Claude', desc: 'Bueno para pensar en voz alta y organizar ideas sueltas.', url: 'https://claude.ai' },
+        { name: 'ChatGPT', desc: 'Lluvia de ideas rápida, listas y variantes de una misma idea.', url: 'https://chatgpt.com' },
+        { name: 'Perplexity', desc: 'Mezcla búsqueda web con IA, bueno para investigar un tema nuevo.', url: 'https://www.perplexity.ai' },
+        { name: 'Notion AI', desc: 'Ideas y organización dentro de tus propias notas y documentos.', url: 'https://www.notion.com/product/ai' },
+      ]
+    },
+    {
+      cat: 'imagenes', catLabel: 'IA para imágenes', accent: '#F472B6',
+      tools: [
+        { name: 'Midjourney', desc: 'De las más prolijas visualmente, ideal para arte e ilustración.', url: 'https://www.midjourney.com' },
+        { name: 'DALL-E', desc: 'Generación de imágenes integrada con ChatGPT.', url: 'https://openai.com/index/dall-e-3/' },
+        { name: 'Leonardo AI', desc: 'Buena para texturas, diseño de producto y referencias 3D.', url: 'https://leonardo.ai' },
+        { name: 'Stable Diffusion', desc: 'Gratis y de código abierto, más técnico de usar.', url: 'https://stability.ai' },
+        { name: 'Nano Banana', desc: 'Edición de imágenes de Gemini (Google), muy buena manteniendo personajes y escenas consistentes.', url: 'https://gemini.google.com' },
+        { name: 'Seedream', desc: 'Modelo de imágenes de ByteDance, bueno generando y editando en alta calidad.', url: 'https://dreamina.capcut.com/es-es/tools/seedream' },
+      ]
+    },
+    {
+      cat: 'modelado', catLabel: 'Sitios para modelar en 3D', accent: '#6FCF97',
+      tools: [
+        { name: 'Tinkercad', desc: 'Gratis y súper simple, ideal para empezar a modelar.', url: 'https://www.tinkercad.com' },
+        { name: 'Blender', desc: 'Gratis y muy potente, el estándar para modelado avanzado.', url: 'https://www.blender.org' },
+        { name: 'Fusion 360', desc: 'Pensado para piezas técnicas y diseño mecánico.', url: 'https://www.autodesk.com/products/fusion-360' },
+        { name: 'SketchUp', desc: 'Fácil de aprender, bueno para objetos y espacios.', url: 'https://www.sketchup.com' },
+        { name: 'Spline', desc: 'Modelado 3D en el navegador, fácil y con buen resultado visual para web.', url: 'https://spline.design' },
+      ]
+    },
+    {
+      cat: 'repositorios', catLabel: 'Modelos 3D listos para imprimir', accent: '#4ECDC4',
+      tools: [
+        { name: 'Printables', desc: 'De Prusa, gran comunidad y modelos de buena calidad, gratis.', url: 'https://www.printables.com' },
+        { name: 'Thingiverse', desc: 'Uno de los repositorios más grandes y antiguos de modelos gratis.', url: 'https://www.thingiverse.com' },
+        { name: 'Cults3D', desc: 'Mezcla de modelos gratis y pagos, buena curaduría.', url: 'https://cults3d.com' },
+        { name: 'MyMiniFactory', desc: 'Modelos verificados que imprimen bien, ideal para figuras.', url: 'https://www.myminifactory.com' },
+        { name: 'Thangs', desc: 'Buscador de modelos 3D con búsqueda por forma, no solo texto.', url: 'https://thangs.com' },
+      ]
+    },
+  ];
+
+  const main = document.getElementById('main');
+  const searchInput = document.getElementById('search');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const noResults = document.getElementById('no-results');
+
+  let activeCat = 'all';
+
+  function render() {
+    const query = searchInput.value.trim().toLowerCase();
+    main.innerHTML = '';
+    let totalVisible = 0;
+
+    data.forEach((block) => {
+      if (activeCat !== 'all' && block.cat !== activeCat) return;
+
+      const filteredTools = block.tools.filter((t) =>
+        t.name.toLowerCase().includes(query) || t.desc.toLowerCase().includes(query)
+      );
+
+      if (filteredTools.length === 0) return;
+      totalVisible += filteredTools.length;
+
+      const section = document.createElement('div');
+      section.className = 'cat-block';
+      section.innerHTML = `
+        <div class="cat-header">
+          <div class="dot" style="background:${block.accent}"></div>
+          <h2>${block.catLabel}</h2>
+          <span class="cat-count">${filteredTools.length}</span>
+        </div>
+        <div class="card-grid"></div>
+      `;
+
+      const grid = section.querySelector('.card-grid');
+      filteredTools.forEach((tool) => {
+        const card = document.createElement('a');
+        card.href = tool.url;
+        card.target = '_blank';
+        card.rel = 'noopener';
+        card.className = 'card';
+        card.style.setProperty('--card-accent', block.accent);
+        card.innerHTML = `
+          <h3>${tool.name} <span class="arrow">→</span></h3>
+          <p>${tool.desc}</p>
+        `;
+        grid.appendChild(card);
+      });
+
+      main.appendChild(section);
+    });
+
+    noResults.style.display = totalVisible === 0 ? 'block' : 'none';
+  }
+
+  searchInput.addEventListener('input', render);
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCat = btn.dataset.cat;
+      render();
+    });
+  });
+
+  render();
+</script>
+
+</body>
+</html>
